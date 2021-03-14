@@ -2,7 +2,7 @@ function loadscript(path){
   const script = document.createElement('script')
   script.src = path
   const promise = new Promise((resolve, reject)=>{
-    document.append(script)
+    document.body.append(script)
     script.onload = ()=>resolve(script)
     script.onerror = reject
   })
