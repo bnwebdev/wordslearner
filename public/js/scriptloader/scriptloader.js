@@ -7,7 +7,7 @@ function loadscript(path){
     script.onerror = reject
   })
   promise.load = function(path){
-    this.then(()=>loadscript(path))
+    return this.then(()=>loadscript(path))
   }
   return promise
 }
