@@ -1,7 +1,7 @@
 function loadscript(path){
   const script = document.createElement('script')
   script.src = path
-  const proise = new Promise((resolve, reject)=>{
+  const promise = new Promise((resolve, reject)=>{
     document.append(script)
     script.onload = ()=>resolve(script)
     script.onerror = reject
