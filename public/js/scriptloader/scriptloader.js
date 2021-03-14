@@ -6,8 +6,10 @@ function loadscript(path){
     script.onload = ()=>resolve(script)
     script.onerror = reject
   })
-  promise.load = function(path){
-    return this.then(()=>loadscript(path))
+  promise.load = function load(path){
+    const promise = this.then(()=>loadscript(path))
+    promise.load = load
+    return promise
   }
   return promise
 }
