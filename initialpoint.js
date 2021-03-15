@@ -1,4 +1,5 @@
 loadscript('public/js/config.js')
+.load('public/js/paginator/paginator.js')
 .load('public/js/initdb.js')
 .load('public/js/script.js')
 .then(()=>console.log(`Scripts are loaded`))
