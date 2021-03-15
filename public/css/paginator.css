@@ -1,0 +1,14 @@
+[data-type="page"] {
+  transform: scale(0,0);
+  transition: transform .4s;
+}
+
+.paginator_hidden__page {
+  transform: scale(0,0);
+}
+
+.paginator_open__page {
+  transform: scale(1,1);
+}
+
+
