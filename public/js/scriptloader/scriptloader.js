@@ -1,15 +1,17 @@
+const PromiseLoader = (function(IPromise, load){
+  return class Promise extends IPromise {
+    load(url){
+      return this.then(()=>loadscript(url))
+    }
+  }
+})(Promise, loadscript)
+
 function loadscript(path){
   const script = document.createElement('script')
   script.src = path
-  const promise = new Promise((resolve, reject)=>{
+  return new PromiseLoader((resolve, reject)=>{
     document.body.append(script)
     script.onload = ()=>resolve(script)
     script.onerror = reject
   })
-  promise.load = function load(path){
-    const promise = this.then(()=>loadscript(path))
-    promise.load = load
-    return promise
-  }
-  return promise
 }
