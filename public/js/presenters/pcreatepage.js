@@ -8,6 +8,7 @@ class CreatePagePresenter extends mvp.Presenter {
     }
   }
   init(){
+    this.view.init()
     this.view.on('change', this.onchange.bind(this))
     this.view.on('click', this.onclick.bind(this))
   }
