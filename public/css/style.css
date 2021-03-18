@@ -1,0 +1,9 @@
+.error__message, 
+.success__message {
+  display: none;
+}
+
+.error .error__message, 
+.success .success__message {
+  display: block;
+}

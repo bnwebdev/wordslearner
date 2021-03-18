@@ -22,8 +22,9 @@ class CreatePagePresenter extends mvp.Presenter {
     }
   }
   onclick(e){
-    if('create-btn' in e.target.dataset){
-      this.model.state('create')
+    if(e.target.dataset.type === 'create-btn'){
+      this.model.state({type: 'creating'})
+      this.model.save()
     }
   }
 }
