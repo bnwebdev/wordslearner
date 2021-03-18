@@ -25,3 +25,7 @@
   background: #333;
   color: white;
 }
+
+#pages {
+  list-style: none;
+}
