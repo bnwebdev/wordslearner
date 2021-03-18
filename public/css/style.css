@@ -7,3 +7,21 @@
 .success .success__message {
   display: block;
 }
+
+#nav__list {
+  list-style: none;
+  display: flex;
+}
+
+.nav__item {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.nav__item:hover {
+  background: #eee;
+}
+
+.nav__item.active {
+  background: #333;
+  color: white;
+}
