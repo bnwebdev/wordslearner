@@ -26,6 +26,33 @@
   color: white;
 }
 
-#pages {
+#pages,
+#words__list {
   list-style: none;
+}
+
+.word__card {
+  display: flex;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.word__card:hover {
+  background: #666;
+  color: white;
+}
+
+.word,
+.translate__word {
+  background: inherit;
+  color: inherit;
+}
+
+.word::after {
+  content: ':';
+  margin-left: 2px;
+}
+
+.translate__word {
+  margin-left: 10px;
 }

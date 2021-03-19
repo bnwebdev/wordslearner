@@ -14,8 +14,8 @@ class ShowPageView extends mvp.View {
   oneToHTML(word){
     return `
       <li class="word__card" title="${word.description || ''}">
-        <div>${word.word}</div>
-        <div>${word.translate}</div>
+        <div class="word">${word.word}</div>
+        <div class="translate__word">${word.translate}</div>
       </li>  
     `
   }
