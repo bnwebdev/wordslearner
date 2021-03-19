@@ -1,6 +1,6 @@
 class ShowPagePresenter extends mvp.Presenter {
   modelHandler(e){
-    return e.words || []
+    e.db.words.toArray(words=>this.view.render(words))
   }
   init(){
   }
