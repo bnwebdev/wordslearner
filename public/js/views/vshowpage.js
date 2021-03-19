@@ -7,7 +7,7 @@ class ShowPageView extends mvp.View {
     if(words.length === 0){
       html = '<h1>Your vocabulary is empty</h1>'
     } else {
-      html = words.map(this.oneToHTML).join('')
+      html = `<ul id="words__list">${words.map(this.oneToHTML).join('')}</ul>`
     }
     return html
   }
