@@ -28,3 +28,4 @@ createPageModel.addEventListener(mvp.Model.change, e=>{
     wordsDBModel.emit()
   }    
 })
+wordsDBModel.addEventListener(mvp.Model.change, e=>learnPageModel.updateWord())
