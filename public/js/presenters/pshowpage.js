@@ -1,6 +1,7 @@
 class ShowPagePresenter extends mvp.Presenter {
   modelHandler(e){
     e.db.words.toArray(words=>this.view.render(words))
+    return 'not-render'
   }
   async toggle(word, db){
     return new Promise(async (res, rej)=>{

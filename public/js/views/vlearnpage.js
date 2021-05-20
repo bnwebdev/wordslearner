@@ -13,8 +13,10 @@ class LearnPageView extends mvp.View {
         const el = this._el
         el.innerHTML = `
           <div id='learn__card'>
-            <div id="word"></div>
-            <div id="translate__word"></div>
+            <div class="flipped-card">
+              <div id="word"></div>
+              <div id="translate__word"></div>
+            </div>
             <button class='btn' data-type="remember-btn">Remember</button>
             <button class='btn' data-type="repeat-btn">Repeat</button>
           </div>

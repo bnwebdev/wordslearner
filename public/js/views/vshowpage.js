@@ -1,5 +1,6 @@
 class ShowPageView extends mvp.View {
   render(words = []){
+    if(words === 'not-render') return;
     this._el.innerHTML = this.toHTML(words)
   }
   toHTML(words){
