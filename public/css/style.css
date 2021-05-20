@@ -56,3 +56,16 @@
 .translate__word {
   margin-left: 10px;
 }
+
+#pages {
+  display: flex;
+  justify-content: center;
+}
+#create__page {
+  display: flex;
+  flex-direction: column;
+}
+#create__page > label {
+  display: flex;
+  justify-content: space-between;
+}

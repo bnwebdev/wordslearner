@@ -27,9 +27,9 @@ class CreatePageView extends mvp.View {
     this._el.innerHTML = `
       <div class='error__message'></div>
       <div class='success__message'></div>
-      <label>Word <input type="text" data-type="word"></label>
-      <label>Translate <input type="text" data-type="translate"></label>
-      <label>Description <input type="text" data-type="description"></label>
+      <label><div>Word</div><input type="text" data-type="word"></label>
+      <label><div>Translate</div><input type="text" data-type="translate"></label>
+      <label><div>Description</div><input type="text" data-type="description"></label>
       <button data-type="create-btn">Create</button>
     `
   }

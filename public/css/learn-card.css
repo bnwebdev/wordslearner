@@ -1,0 +1,32 @@
+.flipped__card {
+    width: 150px;
+    height: 200px;
+    display: block;
+    position: relative;
+}
+#word, 
+#translate__word {
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    background: #ccd;
+}
+#translate__word,
+#side__flipped:checked ~ .flipped__card > #word {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+#side__flipped:checked ~ .flipped__card > #translate__word {
+    transform: rotateY(0deg);
+}
+
+#word, 
+#translate__word {
+  transition: transform .6s;
+}

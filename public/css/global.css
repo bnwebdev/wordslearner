@@ -14,12 +14,19 @@ body {
         ". header ." min-content
         ". content ." auto
         ". footer ." min-content 
-        / minmax(10px, auto) minmax(auto, 1000px) minmax(10px, auto);
+        / minmax(10px, auto) minmax(auto, 600px) minmax(10px, auto);
     gap: 10px;
 
     min-height: 100vh;
 }
 
 #header__site { grid-area: header; }
-#content{ grid-area: content; }
+#content{ grid-area: content;}
 #footer__site { grid-area: footer; }
+
+#header__site,
+#content,
+#footer__site {
+    display: flex;
+    justify-content: center;
+}

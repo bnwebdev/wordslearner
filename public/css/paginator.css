@@ -1,6 +1,12 @@
 [data-type="page"] {
-  transform: scale(0,0);
-  transition: transform .4s;
+  display: block;
+  position: absolute;
+}
+[data-type="book"] {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .paginator_hidden__page {
