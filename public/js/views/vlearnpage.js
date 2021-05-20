@@ -31,7 +31,7 @@ class LearnPageView extends mvp.View {
         const el = this._el
         el.innerHTML = `
           <div id='learn__card'>
-            <h2>Your learns vocabulary is empty</h2>
+            <h2>Your learns vocabulary is empty!</h2>
           </div>
         `
         this.inited = false 
