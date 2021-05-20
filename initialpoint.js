@@ -1,4 +1,5 @@
 loadscript('public/js/config.js')
+.load('public/js/utils.js')
 .load('public/js/paginator/paginator.js')
 .load('public/js/initdb.js')
 .load('public/js/mvp/mvp.js')

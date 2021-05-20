@@ -1,6 +1,3 @@
-const s = selector=>document.querySelector(selector)
-const ss = selector=>document.querySelectorAll(selector)
-
 const paginator = new Paginator('#pages', {opened: ['create__page']})
 
 paginator.addEventListener('pag#openpage', e=>{
@@ -23,7 +20,7 @@ const showPageView = new ShowPageView(s('#show__page'))
 const showPagePresenter = new ShowPagePresenter(wordsDBModel, showPageView)
 
 const learnPageView = new LearnPageView(s('#learn__page'))
-const learnPageModel = new LearnPageModel({word: null})
+const learnPageModel = new LearnPageModel(db)
 const learnPagePresenter = new LearnPagePresenter(learnPageModel, learnPageView)
 
 createPageModel.addEventListener(mvp.Model.change, e=>{
