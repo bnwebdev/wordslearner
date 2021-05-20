@@ -20,25 +20,43 @@ class ShowPagePresenter extends mvp.Presenter {
     })
   }
   init(){
-    this.view.on('click', e=>{
-      let node = null
-      if(e.target.dataset.type === 'active-toggle'){
-        node = e.target.querySelector('.word')
-      } else if(e.target.classList.contains('word')){
-        node = e.target
-      } else if(e.target.classList.contains('translate__word')){
-        node = e.target.parentNode.querySelector('.word')
-      } 
-      if(node){
-        this.toggleNode(node)
-      }
-    }, false)
+    this.view.on('click', this.createModalByClick.bind(this), false)
   }
-  toggleNode(node){
-    this.model.db.words.where({word: node.innerText}).toArray(w=>{
-      if(w.length === 0) return;
-      this.toggle(w[0].word, this.model.db).then(this.emit.bind(this)).catch(console.error)
-    }).catch(console.error)
+  async createModalByClick(e){
+    let node = null
+    if(e.target.dataset.type === 'active-toggle'){
+      node = e.target.querySelector('.word')
+    } else if(e.target.classList.contains('word')){
+      node = e.target
+    } else if(e.target.classList.contains('translate__word')){
+      node = e.target.parentNode.querySelector('.word')
+    }
+    if(!node) return;
+    
+    const deleteWord = modal=>{
+      this.model.deleteWord(node.innerText)
+      modal.close()
+    }
+    const addToLearn = (modal)=>{
+      this.model.addToLearn(node.innerText)
+      modal.close()
+    }
+    const objWord = await this.model.getWord(node.innerText)
+    const modal = createModal({
+      title: `Modal`,
+      isClosable: true,
+      html: `
+        <p style="font-size: 1.3em">Your can use the word "${objWord.word}" with
+        translate "${objWord.translate}" for deleting or adding to learn</p>
+      `,
+      onClose: ()=>modal.destroy(),
+      buttons: [
+        {html: 'Delete', handler: deleteWord}, 
+        {html: 'Learning', handler: addToLearn}
+      ]
+    }) 
+    
+    modal.open()
   }
   emit(){
     this.model.emit()

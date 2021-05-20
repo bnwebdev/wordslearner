@@ -1,4 +1,4 @@
-const paginator = new Paginator('#pages', {opened: ['create__page']})
+const paginator = new Paginator('#pages', {opened: ['show__page']})
 
 paginator.addEventListener('pag#openpage', e=>{
   e.target.pages.filter(p=>p !== e.targetPage)
@@ -7,7 +7,7 @@ paginator.addEventListener('pag#openpage', e=>{
 })
 
 const navView = new NavbarView(s('#header__site'))
-const navModel = new NavbarModel({state: 'create'})
+const navModel = new NavbarModel({state: 'show'})
 const navPresenter = new NavbarPresenter(navModel, navView, paginator)
 
 
@@ -20,12 +20,10 @@ const showPageView = new ShowPageView(s('#show__page'))
 const showPagePresenter = new ShowPagePresenter(wordsDBModel, showPageView)
 
 const learnPageView = new LearnPageView(s('#learn__page'))
-const learnPageModel = new LearnPageModel(db)
-const learnPagePresenter = new LearnPagePresenter(learnPageModel, learnPageView)
+const learnPagePresenter = new LearnPagePresenter(wordsDBModel, learnPageView)
 
 createPageModel.addEventListener(mvp.Model.change, e=>{
   if(e.target.state().type === 'saved'){
     wordsDBModel.emit()
   }    
 })
-wordsDBModel.addEventListener(mvp.Model.change, e=>learnPageModel.updateWord())

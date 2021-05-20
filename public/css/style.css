@@ -61,6 +61,26 @@
   display: flex;
   justify-content: center;
 }
+
+.btn {
+  padding: 10px 15px;
+  border: 1px solid #47f;
+  cursor: pointer;
+  transition: background .3s;
+}
+.btn:hover {
+  background: rgba(252, 248, 36, 0.884);
+}
+
+#create__page,
+#show__page, 
+#learn__page,
+#info__page {
+  width: 450px;
+  font-size: 1.3em;
+  padding: 0;
+}
+
 #create__page {
   display: flex;
   flex-direction: column;
@@ -68,4 +88,39 @@
 #create__page > label {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+#create__page > label > input {
+  flex-basis: 75%;
+  height: 30px;
+  margin-left: 10px;
+  font-size: inherit;
+}
+#create__page > .btn {
+  font-size: inherit;
+}
+
+.label-name {
+  flex-basis: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+#show__page {
+  justify-content: flex-start;
+}
+#learn__page {
+  display: flex;
+  justify-content: center;
+}
+
+.learned > #learn__card > [data-type="remember-btn"].btn {
+  background: rgb(5, 221, 5) !important;
+}
+.forgot > #learn__card > [data-type="repeat-btn"].btn {
+  background: rgb(253, 123, 144) !important;
 }

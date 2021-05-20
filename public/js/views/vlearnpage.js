@@ -1,5 +1,6 @@
 class LearnPageView extends mvp.View {
     render(word){
+        if(word instanceof Promise) return;
         const sel = el => selector => el.querySelector(selector)
         const el = this._el
         const find = sel(el)
@@ -21,17 +22,23 @@ class LearnPageView extends mvp.View {
               <div id="word"></div>
               <div id="translate__word"></div>
             </label>
-            <button class='btn' data-type="remember-btn">Remember</button>
-            <button class='btn' data-type="repeat-btn">Repeat</button>
+            <div class='btn' data-type="remember-btn">Remember</div>
+            <div class='btn' data-type="repeat-btn">Repeat</div>
           </div>
         `
         this.inited = true 
+    }
+    learn(isLearned){
+      this._el.classList.add(isLearned? 'learned': 'forgot')
+      setTimeout(e=>{
+        this._el.classList.remove(isLearned? 'learned': 'forgot')
+      }, 300)
     }
     nullWord(){
         const el = this._el
         el.innerHTML = `
           <div id='learn__card'>
-            <h2>Your learns vocabulary is empty!</h2>
+            <h1>Your learns vocabulary is empty!</h1>
           </div>
         `
         this.inited = false 
