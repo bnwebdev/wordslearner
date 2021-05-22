@@ -84,13 +84,14 @@
 #create__page {
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
 #create__page > label {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 #create__page > label > input {

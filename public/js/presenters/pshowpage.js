@@ -46,8 +46,8 @@ class ShowPagePresenter extends mvp.Presenter {
       title: `Modal`,
       isClosable: true,
       html: `
-        <p style="font-size: 1.3em">Your can use the word "${objWord.word}" with
-        translate "${objWord.translate}" for deleting or adding to learn</p>
+        <p style="font-size: 1.3em">You can use the word "${objWord.word}" 
+        with the translation "${objWord.translate}" to delete or add to teach</p>
       `,
       onClose: ()=>modal.destroy(),
       buttons: [

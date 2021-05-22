@@ -12,9 +12,9 @@ body {
 body {
     display: grid;
     grid-template:
-        ". header ." min-content
+        ". header ." 90px
         ". content ." auto
-        ". footer ." min-content 
+        ". footer ." 2em 
         / minmax(10px, auto) minmax(auto, 600px) minmax(10px, auto);
     gap: 10px;
 
@@ -22,7 +22,7 @@ body {
 }
 
 #header__site { grid-area: header; }
-#content{ grid-area: content;}
+#content{ grid-area: content; }
 #footer__site { grid-area: footer; }
 
 #header__site,
@@ -30,4 +30,12 @@ body {
 #footer__site {
     display: flex;
     justify-content: center;
+}
+
+#header__site {
+    border-bottom: 2px dashed black;
+}
+#footer__site {
+    border-top: 2px dashed grey;
+    align-items: center;
 }

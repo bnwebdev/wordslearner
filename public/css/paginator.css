@@ -1,6 +1,5 @@
 [data-type="page"] {
   display: block;
-  position: absolute;
 }
 [data-type="book"] {
   position: relative;
