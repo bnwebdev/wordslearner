@@ -56,7 +56,7 @@ class BooksPageView extends mvp.View {
     async showInfo(info){
         if(!info) return
         s('#title__book').innerText = info.title
-        s('#statistics > .text__info__book').innerText = `
+        s('#statistics > .text__info__book').innerHTML = `
             <p>Count words in the book: ${info.countWords}</p>
             <p>Count unique words in the book: ${info.infowords.length}</p>
         `
