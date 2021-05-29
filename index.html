@@ -6,17 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Learner</title>
     <link rel="stylesheet" href="public/css/global.css">
-    <!-- Include Dexie.js -->
-    <script src="public/js/dexie.js"></script>
-    <!-- Include jQuery -->
-    <script src="public/js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="public/css/paginator.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/learn-card.css">
+    <link rel="stylesheet" href="public/js/nmodal/nmodal.css">
+    
+    <!-- Add scriptloader with initialpoint.js to end-->
+    <script src="public/js/scriptloader/scriptloader.js"></script>
+    <!-- Include Dexie -->
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
 </head>
 <body>
     <nav id="header__site">
-       
+        <ul id="nav__list">
+          <li class="nav__item" data-to-open="show__page">Show</li>
+          <li class="nav__item" data-to-open="learn__page">Learn</li>
+          <li class="nav__item" data-to-open="create__page">Create</li>
+          <li class="nav__item" data-to-open="books__page">Books</li>
+          <li class="nav__item" data-to-open="info__page">Info</li>
+        </ul>
     </nav>
     <main id="content">
-     
+      <ul id="pages" data-type="book">
+        <li id="learn__page" data-type="page"></li>
+        <li id="show__page" data-type="page"></li>
+        <li id="create__page" data-type="page"></li>
+        <li id="books__page" data-type="page"></li>
+        <li id="info__page" data-type="page"></li>
+      </ul>
     </main>
     <footer id="footer__site">&copy; by Nikita Berezyuk</footer>
 </body>

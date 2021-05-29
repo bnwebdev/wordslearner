@@ -1,0 +1,3 @@
+[submodule "public/js/mvp"]
+	path = public/js/mvp
+	url = https://github.com/bnwebdev/mvp.git

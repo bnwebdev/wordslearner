@@ -1,0 +1,172 @@
+.error__message, 
+.success__message {
+  display: none;
+}
+
+.error .error__message, 
+.success .success__message {
+  display: block;
+}
+
+#nav__list {
+  list-style: none;
+  display: flex;
+}
+
+.nav__item {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.nav__item:hover {
+  background: #eee;
+}
+
+.nav__item.active {
+  background: #333;
+  color: white;
+}
+
+#pages,
+#words__list {
+  list-style: none;
+}
+
+.word__card {
+  display: flex;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.word__card:hover {
+  background: #666;
+  color: white;
+}
+
+.word,
+.translate__word {
+  background: inherit;
+  color: inherit;
+}
+
+.word::after {
+  content: ':';
+  margin-left: 2px;
+}
+
+.translate__word {
+  margin-left: 10px;
+}
+
+#pages {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: 1px solid #47f;
+  cursor: pointer;
+  transition: background .3s;
+}
+.btn:hover {
+  background: rgba(252, 248, 36, 0.884);
+}
+
+#create__page,
+#show__page, 
+#learn__page,
+#info__page {
+  width: 450px;
+  font-size: 1.3em;
+  padding: 0;
+}
+
+#create__page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+#create__page > label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+#create__page > label > input {
+  flex-basis: 75%;
+  height: 30px;
+  margin-left: 10px;
+  font-size: inherit;
+}
+#create__page > .btn {
+  font-size: inherit;
+}
+
+.label-name {
+  flex-basis: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+#show__page {
+  justify-content: flex-start;
+}
+#learn__page {
+  display: flex;
+  justify-content: center;
+}
+
+.learned > #learn__card > [data-type="remember-btn"].btn {
+  background: rgb(5, 221, 5) !important;
+}
+.forgot > #learn__card > [data-type="repeat-btn"].btn {
+  background: rgb(253, 123, 144) !important;
+}
+.book__item {
+  cursor: pointer;
+  padding: 5px 15px;
+}
+.book__title {
+  margin: 0;
+}
+.book__item:hover {
+  background: rgb(199, 198, 198);
+}
+#words__cutter {
+  display: flex;
+  flex-direction: row;
+}
+.words__cutter__nav__item {
+  cursor: pointer;
+  padding: 5px 0;
+  text-align: center;
+  width: 50px;
+  box-sizing: border-box;
+}
+.words__cutter__nav__item:hover {
+  background: #ccc;
+}
+.words__cutter__nav__item.active {
+  background: #333;
+  color: white;
+}
+.words__cutter__nav__item.paginator_hidden__page {
+  padding: 0;
+}
+
+.words__list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.word__from__book {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.word__from__book:hover {
+  background: #ccc;
+}

@@ -1,0 +1,41 @@
+.flipped__card {
+    width: 250px;
+    height: 300px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+#word, 
+#translate__word {
+    box-sizing: border-box;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    color: #fff;
+    text-shadow: 0px 0px 3px black;
+}
+#word {
+    background: #25a;
+}
+#translate__word {
+    background: #2a5;
+}
+#translate__word,
+#side__flipped:checked ~ .flipped__card > #word {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+#side__flipped:checked ~ .flipped__card > #translate__word {
+    transform: rotateY(0deg);
+}
+
+#word, 
+#translate__word {
+  transition: transform .6s;
+}
