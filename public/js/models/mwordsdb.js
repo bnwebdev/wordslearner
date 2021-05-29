@@ -4,7 +4,7 @@ const DBSTATE = {
 }
 class WordsDBModel extends mvp.Model {
   constructor(db, state = DBSTATE.STABLE){
-    super({state, activeWord: null})
+    super({state, activeWord: null, stateBooksPage: null, titleBookForInfo: null})
     this.db = db
     this.init()
   }
@@ -60,5 +60,23 @@ class WordsDBModel extends mvp.Model {
   }
   async getWord(word){
     return await this.db.words.where({word}).first()
+  }
+
+  async getBooks(){
+    return this.db.books.toArray()
+  }
+  async getInfoByBook(){
+    const title = this.titleBookForInfo()
+    return this.db.books.where({title}).first()
+  }
+  async saveBooks(books){
+    if(books.length === 0) return;
+
+    await this.db.books.bulkPut(books)
+    setTimeout(()=>this.emit(), 0)
+  }
+  async hasWord(word){
+    const candidate = await this.db.words.where({word}).first()
+    return !!candidate
   }
 }

@@ -125,3 +125,48 @@
 .forgot > #learn__card > [data-type="repeat-btn"].btn {
   background: rgb(253, 123, 144) !important;
 }
+.book__item {
+  cursor: pointer;
+  padding: 5px 15px;
+}
+.book__title {
+  margin: 0;
+}
+.book__item:hover {
+  background: rgb(199, 198, 198);
+}
+#words__cutter {
+  display: flex;
+  flex-direction: row;
+}
+.words__cutter__nav__item {
+  cursor: pointer;
+  padding: 5px 0;
+  text-align: center;
+  width: 50px;
+  box-sizing: border-box;
+}
+.words__cutter__nav__item:hover {
+  background: #ccc;
+}
+.words__cutter__nav__item.active {
+  background: #333;
+  color: white;
+}
+.words__cutter__nav__item.paginator_hidden__page {
+  padding: 0;
+}
+
+.words__list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.word__from__book {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.word__from__book:hover {
+  background: #ccc;
+}

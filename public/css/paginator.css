@@ -6,12 +6,16 @@
   margin: 0;
   padding: 0;
   width: 100%;
+  list-style: none;
 }
 
 .paginator_hidden__page {
   transform: scale(0,0);
   max-width: 0;
   max-height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 .paginator_open__page {

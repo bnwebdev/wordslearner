@@ -49,14 +49,13 @@ class ShowPagePresenter extends mvp.Presenter {
         <p style="font-size: 1.3em">You can use the word "${objWord.word}" 
         with the translation "${objWord.translate}" to delete or add to teach</p>
       `,
-      onClose: ()=>modal.destroy(),
+      onClose: m=>setTimeout(()=>m.destroy(), 300),
       buttons: [
         {html: 'Delete', handler: deleteWord}, 
         {html: 'Learning', handler: addToLearn}
       ]
     }) 
-    
-    modal.open()
+    setTimeout(()=>modal.open())
   }
   emit(){
     this.model.emit()
