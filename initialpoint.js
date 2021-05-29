@@ -1,6 +1,5 @@
-loadscript('public/js/config.js')
 // utils
-.load('public/js/utils.js')
+loadscript('public/js/utils.js')
 // CHART
 .load('public/js/chart/assignOptions.js')
 .load('public/js/chart/chartDB.js')
