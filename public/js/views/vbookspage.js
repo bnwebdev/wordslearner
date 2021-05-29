@@ -56,7 +56,10 @@ class BooksPageView extends mvp.View {
     async showInfo(info){
         if(!info) return
         s('#title__book').innerText = info.title
-        s('#statistics > .text__info__book').innerText = `Count words in book: ${info.countWords}`
+        s('#statistics > .text__info__book').innerText = `
+            <p>Count words in the book: ${info.countWords}</p>
+            <p>Count unique words in the book: ${info.infowords.length}</p>
+        `
         const perCount = 1000
         
         const pointsToChart = info.infowords.reduce((total, [_, {firstIdx}])=>{
