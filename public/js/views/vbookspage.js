@@ -84,11 +84,11 @@ class BooksPageView extends mvp.View {
             limits: {
                 x: {
                     min: 0,
-                    max: LOG(maxx)
+                    max: maxx
                 }, 
                 y: {
                     min: 0,
-                    max: LOG(maxy)
+                    max: maxy
                 }
             },
             axis: {
