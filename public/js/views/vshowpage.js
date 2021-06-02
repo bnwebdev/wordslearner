@@ -1,16 +1,31 @@
 class ShowPageView extends mvp.View {
-  render(words = []){
-    if(words === 'not-render') return;
-    this._el.innerHTML = this.toHTML(words)
-  }
-  toHTML(words){
-    let html
-    if(words.length === 0){
-      html = '<h1>Your vocabulary is empty</h1>'
-    } else {
-      html = `<ul id="words__list">${words.map(this.oneToHTML).join('')}</ul>`
+  isInitHtml = false
+  render({words = [], query, notRender}){
+    if(notRender) return;
+    if(!this.isInitHtml){
+      this.initHTML()
     }
-    return html
+    this.print(words, query)
+  }
+  initHTML(){
+    this._el.innerHTML = `
+      <input id="search__words" placeholder="Search"></input>
+      <ul id="words__list"></ul>
+      <h1 id="show__page__message"></h1>
+    `
+    this.isInitHtml = true
+  }
+  print(words, query){
+    const $list = s('#words__list')
+    const $msg = s('#show__page__message')
+    $list.innerHTML = ''
+    $msg.innerHTML = ''
+    s('#search__words').value = query || ''
+    if(words.length === 0){
+      $msg.innerHTML = 'Your vocabulary is empty'
+    } else {
+      $list.innerHTML = `${words.map(this.oneToHTML).join('')}`
+    }
   }
   oneToHTML(word){
     return `

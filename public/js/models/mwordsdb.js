@@ -4,7 +4,13 @@ const DBSTATE = {
 }
 class WordsDBModel extends mvp.Model {
   constructor(db, state = DBSTATE.STABLE){
-    super({state, activeWord: null, stateBooksPage: null, titleBookForInfo: null})
+    super({
+            state, 
+            activeWord: null, 
+            stateBooksPage: null, 
+            titleBookForInfo: null,
+            showPageQuery: ''
+    })
     this.db = db
     this.init()
   }
@@ -78,5 +84,8 @@ class WordsDBModel extends mvp.Model {
   async hasWord(word){
     const candidate = await this.db.words.where({word}).first()
     return !!candidate
+  }
+  getWordsWithQuery(query){
+    return this.db.words.where('word').startsWith(query).toArray()
   }
 }

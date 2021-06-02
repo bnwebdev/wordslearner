@@ -1,7 +1,10 @@
 class ShowPagePresenter extends mvp.Presenter {
   modelHandler(e){
-    e.db.words.toArray(words=>this.view.render(words))
-    return 'not-render'
+    const query = this.model.showPageQuery() || ''
+    this.model.getWordsWithQuery(query).then(words=>{
+      this.view.render({words, query})
+    }).catch(console.error)
+    return {notRender: true}
   }
   async toggle(word, db){
     return new Promise(async (res, rej)=>{
@@ -21,6 +24,11 @@ class ShowPagePresenter extends mvp.Presenter {
   }
   init(){
     this.view.on('click', this.createModalByClick.bind(this), false)
+    this.view.on('input', e=>{
+      if(e.target.id === 'search__words'){
+        this.model.showPageQuery(e.target.value)
+      }
+    })
   }
   async createModalByClick(e){
     let node = null

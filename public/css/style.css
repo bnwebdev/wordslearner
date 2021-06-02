@@ -170,3 +170,10 @@
 .word__from__book:hover {
   background: #ccc;
 }
+#search__words {
+  width: 100%;
+  font-size: 1.3em;
+}
+#show__page__message {
+  font-size: 1.5em;
+}

@@ -12,7 +12,8 @@ class CreatePageModel extends mvp.Model {
 	translate: this.translate(),
 	description: this.description()
       }).then(()=>setTimeout(()=>this.state({type: 'saved'}),300))
-	.catch(e=>this.state({type: 'error', message: e.message}))
+      .catch('ConstraintError', e=>this.state({type: 'error', message: 'This word has already existed'}))
+	    .catch(e=>this.state({type: 'error', message: e.message}))
     }
   }
 }

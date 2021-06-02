@@ -3,7 +3,7 @@ class BooksPageView extends mvp.View {
         if(state === 'not__render') return;
         this.updateHTML(state)
         if(state === 'show__books') this.showBooks(books)
-        if(state === 'info__book') this.showInfo(info)
+        if(/^info__book/.test(state)) this.showInfo(info, state)
         this.prevState = state
     }
     get el(){ return this._el }
@@ -12,14 +12,10 @@ class BooksPageView extends mvp.View {
         return true 
     }
     updateHTML(state){
-        if(this.prevState && state === this.prevState) return;
-        switch(state){
-            case 'info__book':
-                this.el = this.infoBookTemplateHTML
-                break;
-            case 'show__books':
-            default:
-                this.el = this.showBooksTemplateHTML
+        if(/^info__book/.test(state)){
+            this.el = this.infoBookTemplateHTML
+        } else {
+            this.el = this.showBooksTemplateHTML
         }
     }
     get infoBookTemplateHTML(){
@@ -53,7 +49,7 @@ class BooksPageView extends mvp.View {
             `)
         })
     }
-    async showInfo(info){
+    async showInfo(info, state){
         if(!info) return
         s('#title__book').innerText = info.title
         s('#statistics > .text__info__book').innerHTML = `
@@ -80,7 +76,7 @@ class BooksPageView extends mvp.View {
                 maxy = p.y
             }
         }
-        
+        s('#statistics > .chart__info__book').innerHTML = ''
         const chart = new Chart('#statistics > .chart__info__book', {
             width: 400,
             height: 200,
@@ -114,9 +110,9 @@ class BooksPageView extends mvp.View {
         const html = await this.getInfowordsAsHTML(info.infowords)
         words.innerHTML = html
 
-        this.createPaginatorAndNavbar(words)
+        this.createPaginatorAndNavbar(words, state)
     }
-    createPaginatorAndNavbar(words){
+    createPaginatorAndNavbar(words, state){
         const paginator = new Paginator('#words__in__book')
         const pages = Array.from(words.querySelectorAll('[data-type="page"]'))
         const nav = s('#words__cutter')
@@ -163,7 +159,7 @@ class BooksPageView extends mvp.View {
                 .forEach(e.target.close)
         })
 
-        navigator.open('nav__book__info__words__page__0')
+        navigator.open('nav__book__info__words__page__' + state.replace('info__book', ''))
         
         this.paginator.fn = e=>{
             navigator.open(e.target.id)
