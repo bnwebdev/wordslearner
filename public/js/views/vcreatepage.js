@@ -8,19 +8,22 @@ class CreatePageView extends mvp.View {
       switch(state.type){
       	case 'error':
           this._el.classList.add('error')
-	  this._el.classList.remove('success')
+	        this._el.classList.remove('success')
           this._el.querySelector('.error__message').innerText = state.message || state.type
           break;
         case 'saved':
           this._el.classList.add('success')
-	  this._el.classList.remove('error')
+	        this._el.classList.remove('error')
           this._el.querySelector('.success__message').innerText = 'Saved'
           break;
-	case 'creating':
+	      case 'creating':
           this._el.classList.add('success')
-	  this._el.classList.remove('error')
+	        this._el.classList.remove('error')
           this._el.querySelector('.success__message').innerText = 'Saving ...'
-         break;
+          break;
+        case 'stable':
+          this._el.classList.remove('error')
+	        this._el.classList.remove('success')
       }
   }
   init(){

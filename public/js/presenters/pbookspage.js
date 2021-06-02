@@ -8,7 +8,7 @@ class BooksPagePresenter extends mvp.Presenter {
             } else if(e.target.id === 'back__to__show__books__btn'){
                 this.model.stateBooksPage('show__books')
             } else if(e.target.classList.contains('words__cutter__nav__item')){
-                this.view.paginator.fn(e)
+                this.model.stateBooksPage('info__book' + e.target.id.replace('nav__book__info__words__page__', ''))
             } else if(e.target.classList.contains('word__from__book')){
                 this.createModalByWord(e.target)
             }
@@ -23,7 +23,7 @@ class BooksPagePresenter extends mvp.Presenter {
             this.model.getBooks().then(books=>{
                 this.view.render({state, books})
             }).catch(console.error)
-        } else if(state === 'info__book'){
+        } else if(/^info__book/.test(state)){
             this.model.getInfoByBook().then(info=>{
                 this.view.render({state, info})
             }).catch(console.error)
@@ -67,7 +67,7 @@ class BooksPagePresenter extends mvp.Presenter {
     }
     onShowInfo(e){
         this.model.titleBookForInfo(e.target.innerText)
-        this.model.stateBooksPage('info__book')
+        this.model.stateBooksPage('info__book0')
     }
     async createModalByWord($wordFromBook){
         const word = $wordFromBook.innerText
