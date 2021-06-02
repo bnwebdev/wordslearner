@@ -80,7 +80,7 @@ class BooksPageView extends mvp.View {
                 maxy = p.y
             }
         }
-        
+        s('#statistics > .chart__info__book').innerHTML = ''
         const chart = new Chart('#statistics > .chart__info__book', {
             width: 400,
             height: 200,
