@@ -1,3 +1,6 @@
 [submodule "public/js/mvp"]
 	path = public/js/mvp
 	url = https://github.com/bnwebdev/mvp.git
+[submodule "public/js/nmodal"]
+	path = public/js/nmodal
+	url = https://github.com/bnwebdev/nmodal.git
