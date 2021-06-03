@@ -22,7 +22,6 @@ loadscript('public/js/utils.js')
 // db model
 .load('public/js/models/mwordsdb.js')
 // create page
-.load('public/js/models/mcreatepage.js')
 .load('public/js/views/vcreatepage.js')
 .load('public/js/presenters/pcreatepage.js')
 // navbar
@@ -38,6 +37,9 @@ loadscript('public/js/utils.js')
 // books page
 .load('public/js/presenters/pbookspage.js')
 .load('public/js/views/vbookspage.js')
+// books page
+.load('public/js/presenters/pinfopage.js')
+.load('public/js/views/vinfopage.js')
 // main script
 .load('public/js/script.js')
 .then(()=>console.log(`Scripts are loaded`))

@@ -5,12 +5,14 @@ const DBSTATE = {
 class WordsDBModel extends mvp.Model {
   constructor(db, state = DBSTATE.STABLE){
     super({
-            state, 
-            activeWord: null, 
-            stateBooksPage: null, 
-            titleBookForInfo: null,
-            showPageQuery: ''
+      state, 
+      activeWord: null, 
+      stateBooksPage: null, 
+      titleBookForInfo: null,
+      showPageQuery: '',
+      stateCreatePage: null
     })
+      
     this.db = db
     this.init()
   }
@@ -87,5 +89,50 @@ class WordsDBModel extends mvp.Model {
   }
   getWordsWithQuery(query){
     return this.db.words.where('word').startsWith(query).toArray()
+  }
+  wordCreatePage(value){
+    if(value === undefined) return this.__wordCreatePage || ''
+    this.__wordCreatePage = value 
+  }
+  translateCreatePage(value){
+    if(value === undefined) return this.__translateCreatePage || ''
+    this.__translateCreatePage = value 
+  }
+  descriptionCreatePage(value){
+    if(value === undefined) return this.__descriptionCreatePage || ''
+    this.__descriptionCreatePage = value 
+  }
+  isAddToLearnCreatePage(value){
+    if(value === undefined) return this.__isAddToLearnCreatePage || false
+    this.__isAddToLearnCreatePage = value 
+  }
+  async saveCreatePage(){
+    const word = this.wordCreatePage()
+    const translate = this.translateCreatePage()
+    const description = this.descriptionCreatePage()
+    const isAddToLearn = this.isAddToLearnCreatePage()
+    this.stateCreatePage({type: 'saving'})
+    try {
+      if(!word || !translate) {
+        throw new Error('Empty word or translate fields')
+      }
+      await this.db.words.put({
+        word,
+        translate,
+        description,
+        isLearned: false
+      })
+      if(isAddToLearn) await this.addToLearn(word)
+      setTimeout(()=>{
+        this.wordCreatePage('')
+        this.translateCreatePage('')
+        this.descriptionCreatePage('')
+        this.stateCreatePage({type: 'saved'})
+        setTimeout(()=>this.stateCreatePage({type: 'stable'}), 300)
+      }, 300)
+    } catch (e){
+      this.stateCreatePage({type: 'error', message: e.message})
+      setTimeout(()=>this.stateCreatePage({type: 'stable'}), 3000)
+    }
   }
 }

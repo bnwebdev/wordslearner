@@ -83,9 +83,12 @@ class BooksPagePresenter extends mvp.Presenter {
             }: {
                 html: `Create`,
                 handler: m=>{
-                    createPageModel.word(word)
+                    this.model.wordCreatePage(word)
+                    this.model.translateCreatePage('')
+                    this.model.descriptionCreatePage('')
                     navModel.state('create')
                     getAppPaginator().open('create__page')
+                    this.model.emit()
                     m.close()
                 }
             }],

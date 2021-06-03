@@ -80,12 +80,14 @@
   font-size: 1.3em;
   padding: 0;
 }
+/* ===== CREATE PAGE ===== */
 
 #create__page {
   display: flex;
   flex-direction: column;
   padding-top: 10px;
 }
+
 #create__page > label {
   display: flex;
   justify-content: space-between;
@@ -95,7 +97,6 @@
 }
 
 #create__page > label > input {
-  flex-basis: 75%;
   height: 30px;
   margin-left: 10px;
   font-size: inherit;
@@ -105,15 +106,56 @@
 }
 
 .label-name {
-  flex-basis: 25%;
+  flex-basis: 30%;
   display: flex;
   justify-content: center;
   align-items: baseline;
 }
+label {
+  cursor: pointer;
+}
 
+.checkout__box__state {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #47f;
+  position: relative;
+}
+input:checked ~ .checkout__box__state::after {
+  position: absolute;
+  top: 5px;
+  left: .5px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
+  font-weight: 900;
+  color: rgb(22, 23, 37);
+  content: '*';
+}
+
+.success > .success__message,
+.error > .error__message {
+  display: flex;
+  justify-content: center;
+  border: 2px solid black;
+  margin: 10px 0;
+}
+
+#create__page > .success__message {
+  border-color: green;
+}
+#create__page > .error__message {
+border-color: hotpink;
+}
+/* ===== SHOW PAGE ===== */
 #show__page {
   justify-content: flex-start;
 }
+
+/* ===== LEARN PAGE ===== */
 #learn__page {
   display: flex;
   justify-content: center;
