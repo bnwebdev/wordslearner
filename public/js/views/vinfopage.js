@@ -12,7 +12,7 @@ class InfoPageView extends mvp.View {
             </p>
             <p>If one hard work, one will shine</p>
         `
-        this.isInitHTML = tre
+        this.isInitHTML = true
     }
     isInitHTML = false
 }

@@ -26,4 +26,7 @@ const learnPagePresenter = new LearnPagePresenter(wordsDBModel, learnPageView)
 const booksPageView = new BooksPageView(s('#books__page'))
 const booksPagePresenter = new BooksPagePresenter(wordsDBModel, booksPageView)
 
+const infoPageView = new InfoPageView(s('#info__page'))
+const infoPagePresenter = new InfoPagePresenter(wordsDBModel, infoPageView)
+
 
