@@ -1,9 +1,10 @@
 class CreatePageView extends mvp.View {
-  render({word,translate,state,description}){
+  render({word,translate,state,description, isAddToLearn}){
       const arr = Array.from(this._el.querySelectorAll('[data-type]'))
       arr.find(el=>'word' ===  el.dataset.type).value = word || ''
       arr.find(el=>'translate' ===  el.dataset.type).value = translate || ''
       arr.find(el=>'description' ===  el.dataset.type).value = description || ''
+      arr.find(el=>'add-to-learn' ===  el.dataset.type).checked = isAddToLearn
       if(!state) return;
       switch(state.type){
       	case 'error':
@@ -33,6 +34,7 @@ class CreatePageView extends mvp.View {
       <label><div class="label-name">Word</div><input type="text" data-type="word"></label>
       <label><div class="label-name">Translate</div><input type="text" data-type="translate"></label>
       <label><div class="label-name">Description</div><input type="text" data-type="description"></label>
+      <label class="add__to__learn__checkbox"><div class="label-name">Add to learn</div><input type="checkbox" data-type="add-to-learn" hidden><div class="checkout__box__state"></div></label>
       <button data-type="create-btn" class="btn">Create</button>
     `
   }

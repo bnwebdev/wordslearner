@@ -1,10 +1,11 @@
 class CreatePagePresenter extends mvp.Presenter {
   modelHandler(e){
     return {
-	    state: e.target.state(),
-	    word: e.target.word(),
-	    translate: e.target.translate(),
-	    description: e.target.description()
+	    state: e.target.stateCreatePage(),
+	    word: e.target.wordCreatePage(),
+	    translate: e.target.translateCreatePage(),
+	    description: e.target.descriptionCreatePage(),
+      isAddToLearn: e.target.isAddToLearnCreatePage()
     }
   }
   init(){
@@ -17,15 +18,18 @@ class CreatePagePresenter extends mvp.Presenter {
       case 'word':
       case 'translate':
       case 'description':
-        this.model[e.target.dataset.type](e.target.value)
-        this.model.state({type: 'stable'})
+        this.model[e.target.dataset.type + 'CreatePage'](e.target.value)
+        this.model.stateCreatePage({type: 'stable'})
+        break;
+      case 'add-to-learn':
+        this.model.isAddToLearnCreatePage(!this.model.isAddToLearnCreatePage())
     	break;
     }
   }
   onclick(e){
     if(e.target.dataset.type === 'create-btn'){
-      this.model.state({type: 'creating'})
-      this.model.save()
+      this.model.stateCreatePage({type: 'creating'})
+      this.model.saveCreatePage()
     }
   }
 }
